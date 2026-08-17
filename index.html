@@ -163,14 +163,19 @@ const testlar = {
 
 
 let tanlanganFan = "";
-
+let foydalanuvchiIsmi = "";
 let savolRaqami = 0;
 
 let ball = 0;
 
 
 function boshlash(fan) {
+foydalanuvchiIsmi = document.getElementById("ism").value;
 
+if (foydalanuvchiIsmi.trim() === "") {
+  alert("Iltimos, ismingizni kiriting!");
+  return;
+}
   tanlanganFan = fan;
 
   savolRaqami = 0;
@@ -183,8 +188,8 @@ function boshlash(fan) {
 
   if (fan === "matematika") {
 
-    document.getElementById("fanNomi").innerText =
-      "➕ Matematika";
+    document.getElementById("natija").innerText =
+  "🏆 " + foydalanuvchiIsmi + ", natijangiz: " + ball + " / " + test.length;
 
   } else {
 
