@@ -32,6 +32,15 @@
       background: #eeeeee;
     }
 
+    input {
+      width: 90%;
+      padding: 14px;
+      font-size: 17px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+
     h1 {
       font-size: 30px;
     }
@@ -44,6 +53,10 @@
     #test {
       display: none;
     }
+
+    #qayta {
+      display: none;
+    }
   </style>
 </head>
 
@@ -52,12 +65,15 @@
 <div class="box">
 
   <div id="menu">
+
     <h1>📚 O‘quvchi Test</h1>
-<input
-  type="text"
-  id="ism"
-  placeholder="Ismingizni kiriting"
->
+
+    <input
+      type="text"
+      id="ism"
+      placeholder="Ismingizni kiriting"
+    >
+
     <p>Fan tanlang:</p>
 
     <button onclick="boshlash('matematika')">
@@ -82,6 +98,10 @@
     <div id="javoblar"></div>
 
     <p id="natija"></p>
+
+    <button id="qayta" onclick="qaytaIshlash()">
+      🔄 Qayta ishlash
+    </button>
 
   </div>
 
@@ -123,6 +143,7 @@ const testlar = {
       javoblar: ["13", "15", "17"],
       togri: 1
     }
+
   ],
 
 
@@ -157,6 +178,7 @@ const testlar = {
       javoblar: ["Suv", "Non", "Sut"],
       togri: 0
     }
+
   ]
 
 };
@@ -165,17 +187,21 @@ const testlar = {
 let tanlanganFan = "";
 let foydalanuvchiIsmi = "";
 let savolRaqami = 0;
-
 let ball = 0;
 
 
 function boshlash(fan) {
-foydalanuvchiIsmi = document.getElementById("ism").value;
 
-if (foydalanuvchiIsmi.trim() === "") {
-  alert("Iltimos, ismingizni kiriting!");
-  return;
-}
+  foydalanuvchiIsmi =
+    document.getElementById("ism").value;
+
+  if (foydalanuvchiIsmi.trim() === "") {
+
+    alert("Iltimos, ismingizni kiriting!");
+
+    return;
+  }
+
   tanlanganFan = fan;
 
   savolRaqami = 0;
@@ -186,10 +212,14 @@ if (foydalanuvchiIsmi.trim() === "") {
 
   document.getElementById("test").style.display = "block";
 
+  document.getElementById("qayta").style.display = "none";
+
+  document.getElementById("natija").innerText = "";
+
   if (fan === "matematika") {
 
-    document.getElementById("natija").innerText =
-  "🏆 " + foydalanuvchiIsmi + ", natijangiz: " + ball + " / " + test.length;
+    document.getElementById("fanNomi").innerText =
+      "➕ Matematika";
 
   } else {
 
@@ -208,7 +238,8 @@ function savolniChiqar() {
   let test = testlar[tanlanganFan];
 
   document.getElementById("raqam").innerText =
-    "Savol " + (savolRaqami + 1) + " / " + test.length;
+    "Savol " + (savolRaqami + 1) +
+    " / " + test.length;
 
   document.getElementById("savol").innerText =
     test[savolRaqami].savol;
@@ -216,12 +247,16 @@ function savolniChiqar() {
 
   let javoblar = "";
 
-  test[savolRaqami].javoblar.forEach(function(javob, index) {
+  test[savolRaqami].javoblar.forEach(
+    function(javob, index) {
 
-    javoblar +=
-      `<button onclick="javobniTekshir(${index})">${javob}</button>`;
+      javoblar +=
+        `<button onclick="javobniTekshir(${index})">
+          ${javob}
+        </button>`;
 
-  });
+    }
+  );
 
 
   document.getElementById("javoblar").innerHTML =
@@ -259,9 +294,30 @@ function javobniTekshir(tanlangan) {
     document.getElementById("javoblar").innerHTML = "";
 
     document.getElementById("natija").innerText =
-      "🏆 Natijangiz: " + ball + " / " + test.length;
+      "🏆 " + foydalanuvchiIsmi +
+      ", natijangiz: " +
+      ball + " / " + test.length;
+
+    document.getElementById("qayta").style.display =
+      "block";
 
   }
+
+}
+
+
+function qaytaIshlash() {
+
+  savolRaqami = 0;
+
+  ball = 0;
+
+  document.getElementById("qayta").style.display =
+    "none";
+
+  document.getElementById("natija").innerText = "";
+
+  savolniChiqar();
 
 }
 
