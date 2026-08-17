@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini Test</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 450px;
+      margin: auto;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin: 7px 0;
+      font-size: 17px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    #natija {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h1>📚 Mini Test</h1>
+
+  <h2 id="savol"></h2>
+
+  <div id="javoblar"></div>
+
+  <p id="natija"></p>
+
+</div>
+
+<script>
+
+const testlar = [
+  {
+    savol: "2 + 3 = ?",
+    javoblar: ["4", "5", "6"],
+    togri: 1
+  },
+
+  {
+    savol: "5 × 2 = ?",
+    javoblar: ["7", "10", "12"],
+    togri: 1
+  },
+
+  {
+    savol: "10 - 4 = ?",
+    javoblar: ["5", "6", "7"],
+    togri: 1
+  },
+
+  {
+    savol: "3 + 7 = ?",
+    javoblar: ["8", "10", "12"],
+    togri: 1
+  },
+
+  {
+    savol: "12 ÷ 3 = ?",
+    javoblar: ["3", "4", "5"],
+    togri: 1
+  },
+
+  {
+    savol: "9 + 1 = ?",
+    javoblar: ["10", "11", "12"],
+    togri: 0
+  },
+
+  {
+    savol: "6 × 2 = ?",
+    javoblar: ["10", "12", "14"],
+    togri: 1
+  },
+
+  {
+    savol: "15 - 5 = ?",
+    javoblar: ["8", "10", "12"],
+    togri: 1
+  },
+
+  {
+    savol: "4 + 4 = ?",
+    javoblar: ["6", "8", "9"],
+    togri: 1
+  },
+
+  {
+    savol: "20 ÷ 4 = ?",
+    javoblar: ["4", "5", "6"],
+    togri: 1
+  }
+];
+
+let savolRaqami = 0;
+let ball = 0;
+
+function savolniChiqar() {
+
+  document.getElementById("savol").innerText =
+    testlar[savolRaqami].savol;
+
+  let javoblar = "";
+
+  testlar[savolRaqami].javoblar.forEach(function(javob, index) {
+
+    javoblar +=
+      `<button onclick="javobniTekshir(${index})">${javob}</button>`;
+
+  });
+
+  document.getElementById("javoblar").innerHTML = javoblar;
+}
+
+function javobniTekshir(tanlangan) {
+
+  if (tanlangan === testlar[savolRaqami].togri) {
+    ball++;
+  }
+
+  savolRaqami++;
+
+  if (savolRaqami < testlar.length) {
+
+    savolniChiqar();
+
+  } else {
+
+    document.getElementById("savol").innerText =
+      "🎉 Test tugadi!";
+
+    document.getElementById("javoblar").innerHTML = "";
+
+    document.getElementById("natija").innerText =
+      "Sizning natijangiz: " + ball + " / " + testlar.length;
+  }
+}
+
+savolniChiqar();
+
+</script>
+
+</body>
+</html>
