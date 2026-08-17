@@ -76,13 +76,11 @@
 
     <p>Fan tanlang:</p>
 
-    <button onclick="boshlash('matematika')">
-      ➕ Matematika
-    </button>
-
-    <button onclick="boshlash('ingliz')">
-      🇬🇧 Ingliz tili
-    </button>
+    <button onclick="boshlash('matematika')">➕ Matematika</button>
+    <button onclick="boshlash('ingliz')">🇬🇧 Ingliz tili</button>
+    <button onclick="boshlash('tarix')">📜 Tarix</button>
+    <button onclick="boshlash('onaTili')">📖 Ona tili</button>
+    <button onclick="boshlash('informatika')">💻 Informatika</button>
 
   </div>
 
@@ -90,9 +88,7 @@
   <div id="test">
 
     <h2 id="fanNomi"></h2>
-
     <p id="raqam"></p>
-
     <h2 id="savol"></h2>
 
     <div id="javoblar"></div>
@@ -114,130 +110,80 @@ const testlar = {
 
   matematika: [
 
-    {
-      savol: "5 + 7 = ?",
-      javoblar: ["10", "12", "14"],
-      togri: 1
-    },
-
-    {
-      savol: "8 × 2 = ?",
-      javoblar: ["14", "16", "18"],
-      togri: 1
-    },
-
-    {
-      savol: "20 - 8 = ?",
-      javoblar: ["10", "12", "14"],
-      togri: 1
-    },
-
-    {
-      savol: "36 ÷ 6 = ?",
-      javoblar: ["5", "6", "7"],
-      togri: 1
-    },
-
-    {
-      savol: "9 + 6 = ?",
-      javoblar: ["13", "15", "17"],
-      togri: 1
-    },
-
-    {
-      savol: "7 × 3 = ?",
-      javoblar: ["20", "21", "24"],
-      togri: 1
-    },
-
-    {
-      savol: "40 ÷ 5 = ?",
-      javoblar: ["6", "8", "10"],
-      togri: 1
-    },
-
-    {
-      savol: "18 + 7 = ?",
-      javoblar: ["24", "25", "26"],
-      togri: 1
-    },
-
-    {
-      savol: "50 - 23 = ?",
-      javoblar: ["27", "28", "29"],
-      togri: 0
-    },
-
-    {
-      savol: "6 × 6 = ?",
-      javoblar: ["30", "36", "42"],
-      togri: 1
-    }
+    { savol: "5 + 7 = ?", javoblar: ["10", "12", "14"], togri: 1 },
+    { savol: "8 × 2 = ?", javoblar: ["14", "16", "18"], togri: 1 },
+    { savol: "20 - 8 = ?", javoblar: ["10", "12", "14"], togri: 1 },
+    { savol: "36 ÷ 6 = ?", javoblar: ["5", "6", "7"], togri: 1 },
+    { savol: "9 + 6 = ?", javoblar: ["13", "15", "17"], togri: 1 },
+    { savol: "7 × 3 = ?", javoblar: ["20", "21", "24"], togri: 1 },
+    { savol: "40 ÷ 5 = ?", javoblar: ["6", "8", "10"], togri: 1 },
+    { savol: "18 + 7 = ?", javoblar: ["24", "25", "26"], togri: 1 },
+    { savol: "50 - 23 = ?", javoblar: ["27", "28", "29"], togri: 0 },
+    { savol: "6 × 6 = ?", javoblar: ["30", "36", "42"], togri: 1 }
 
   ],
 
 
   ingliz: [
 
-    {
-      savol: "Apple so‘zi nimani anglatadi?",
-      javoblar: ["Olma", "Kitob", "Uy"],
-      togri: 0
-    },
+    { savol: "Apple so‘zi nimani anglatadi?", javoblar: ["Olma", "Kitob", "Uy"], togri: 0 },
+    { savol: "Book so‘zi nimani anglatadi?", javoblar: ["Qalam", "Kitob", "Maktab"], togri: 1 },
+    { savol: "Cat so‘zi nimani anglatadi?", javoblar: ["It", "Mushuk", "Ot"], togri: 1 },
+    { savol: "School so‘zi nimani anglatadi?", javoblar: ["Maktab", "Uy", "Do‘kon"], togri: 0 },
+    { savol: "Water so‘zi nimani anglatadi?", javoblar: ["Suv", "Non", "Sut"], togri: 0 },
+    { savol: "Dog so‘zi nimani anglatadi?", javoblar: ["Mushuk", "It", "Ot"], togri: 1 },
+    { savol: "House so‘zi nimani anglatadi?", javoblar: ["Uy", "Maktab", "Mashina"], togri: 0 },
+    { savol: "Pen so‘zi nimani anglatadi?", javoblar: ["Kitob", "Qalam", "Stol"], togri: 1 },
+    { savol: "Sun so‘zi nimani anglatadi?", javoblar: ["Oy", "Yulduz", "Quyosh"], togri: 2 },
+    { savol: "Milk so‘zi nimani anglatadi?", javoblar: ["Suv", "Sut", "Choy"], togri: 1 }
 
-    {
-      savol: "Book so‘zi nimani anglatadi?",
-      javoblar: ["Qalam", "Kitob", "Maktab"],
-      togri: 1
-    },
+  ],
 
-    {
-      savol: "Cat so‘zi nimani anglatadi?",
-      javoblar: ["It", "Mushuk", "Ot"],
-      togri: 1
-    },
 
-    {
-      savol: "School so‘zi nimani anglatadi?",
-      javoblar: ["Maktab", "Uy", "Do‘kon"],
-      togri: 0
-    },
+  tarix: [
 
-    {
-      savol: "Water so‘zi nimani anglatadi?",
-      javoblar: ["Suv", "Non", "Sut"],
-      togri: 0
-    },
+    { savol: "O‘zbekiston poytaxti qaysi shahar?", javoblar: ["Toshkent", "Samarqand", "Buxoro"], togri: 0 },
+    { savol: "Amir Temur qaysi asrda yashagan?", javoblar: ["XIV-XV", "XVI-XVII", "XII-XIII"], togri: 0 },
+    { savol: "Samarqanddagi mashhur maydon qanday ataladi?", javoblar: ["Registon", "Ichan qal’a", "Ark"], togri: 0 },
+    { savol: "O‘zbekiston mustaqillik kunini qachon nishonlaydi?", javoblar: ["1-sentabr", "8-dekabr", "21-mart"], togri: 0 },
+    { savol: "Buyuk Ipak yo‘li nimani bog‘lagan?", javoblar: ["Sharq va G‘arbni", "Faqat Afrikani", "Faqat Amerikani"], togri: 0 },
+    { savol: "Mirzo Ulug‘bek kim bo‘lgan?", javoblar: ["Olim va hukmdor", "Shoir", "Rassom"], togri: 0 },
+    { savol: "O‘zbekiston Respublikasining davlat tili qaysi?", javoblar: ["O‘zbek tili", "Rus tili", "Ingliz tili"], togri: 0 },
+    { savol: "Buxorodagi mashhur tarixiy inshootlardan biri?", javoblar: ["Ark", "Eyfel minorasi", "Kolizey"], togri: 0 },
+    { savol: "Navro‘z bayrami qaysi faslda nishonlanadi?", javoblar: ["Bahor", "Qish", "Kuz"], togri: 0 },
+    { savol: "Alisher Navoiy kim bo‘lgan?", javoblar: ["Shoir va mutafakkir", "Sarkarda", "Sayyoh"], togri: 0 }
 
-    {
-      savol: "Dog so‘zi nimani anglatadi?",
-      javoblar: ["Mushuk", "It", "Ot"],
-      togri: 1
-    },
+  ],
 
-    {
-      savol: "House so‘zi nimani anglatadi?",
-      javoblar: ["Uy", "Maktab", "Mashina"],
-      togri: 0
-    },
 
-    {
-      savol: "Pen so‘zi nimani anglatadi?",
-      javoblar: ["Kitob", "Qalam", "Stol"],
-      togri: 1
-    },
+  onaTili: [
 
-    {
-      savol: "Sun so‘zi nimani anglatadi?",
-      javoblar: ["Oy", "Yulduz", "Quyosh"],
-      togri: 2
-    },
+    { savol: "O‘zbek tilida nechta unli harf bor?", javoblar: ["6 ta", "5 ta", "7 ta"], togri: 0 },
+    { savol: "Ot qanday so‘roqlarga javob bo‘ladi?", javoblar: ["Kim? Nima?", "Qanday?", "Nima qildi?"], togri: 0 },
+    { savol: "Sifat nimani bildiradi?", javoblar: ["Belgini", "Harakatni", "Sonni"], togri: 0 },
+    { savol: "Fe’l nimani bildiradi?", javoblar: ["Harakatni", "Belgini", "Predmetni"], togri: 0 },
+    { savol: "Gap oxirida darak gapda odatda nima qo‘yiladi?", javoblar: [".", "?", "!"], togri: 0 },
+    { savol: "So‘zning ma’noli eng kichik qismi nima?", javoblar: ["Morfema", "Gap", "Matn"], togri: 0 },
+    { savol: "“Chiroyli” qanday so‘z turkumi?", javoblar: ["Sifat", "Fe’l", "Ot"], togri: 0 },
+    { savol: "“Yugurdi” qanday so‘z turkumi?", javoblar: ["Fe’l", "Sifat", "Ot"], togri: 0 },
+    { savol: "“Kitob” qanday so‘z turkumi?", javoblar: ["Ot", "Fe’l", "Sifat"], togri: 0 },
+    { savol: "So‘roq gap oxirida qaysi belgi qo‘yiladi?", javoblar: ["?", ".", "!"], togri: 0 }
 
-    {
-      savol: "Milk so‘zi nimani anglatadi?",
-      javoblar: ["Suv", "Sut", "Choy"],
-      togri: 1
-    }
+  ],
+
+
+  informatika: [
+
+    { savol: "Kompyuterning asosiy qurilmalaridan biri?", javoblar: ["Monitor", "Daftar", "Kitob"], togri: 0 },
+    { savol: "Klaviatura nima uchun ishlatiladi?", javoblar: ["Ma’lumot kiritish", "Rasm chizish", "Qog‘oz chiqarish"], togri: 0 },
+    { savol: "Sichqoncha nima?", javoblar: ["Kiritish qurilmasi", "Printer", "Monitor"], togri: 0 },
+    { savol: "Internet nima?", javoblar: ["Global tarmoq", "Kompyuter o‘yini", "Printer"], togri: 0 },
+    { savol: "HTML nima uchun ishlatiladi?", javoblar: ["Veb-sahifa yaratish", "Video suratga olish", "Musiqa yozish"], togri: 0 },
+    { savol: "“.jpg” odatda qanday fayl?", javoblar: ["Rasm", "Audio", "Matn"], togri: 0 },
+    { savol: "Printer nima qiladi?", javoblar: ["Qog‘ozga chiqaradi", "Internet tarqatadi", "Ovoz yozadi"], togri: 0 },
+    { savol: "Google Chrome nima?", javoblar: ["Brauzer", "Antivirus", "O‘yin"], togri: 0 },
+    { savol: "CPU nima?", javoblar: ["Markaziy protsessor", "Monitor", "Klaviatura"], togri: 0 },
+    { savol: "Faylni saqlash uchun qaysi tugma ko‘p ishlatiladi?", javoblar: ["Ctrl + S", "Ctrl + P", "Ctrl + X"], togri: 0 }
 
   ]
 
@@ -256,9 +202,7 @@ function boshlash(fan) {
     document.getElementById("ism").value;
 
   if (foydalanuvchiIsmi.trim() === "") {
-
     alert("Iltimos, ismingizni kiriting!");
-
     return;
   }
 
@@ -267,27 +211,22 @@ function boshlash(fan) {
   ball = 0;
 
   document.getElementById("menu").style.display = "none";
-
   document.getElementById("test").style.display = "block";
-
   document.getElementById("qayta").style.display = "none";
-
   document.getElementById("natija").innerText = "";
 
-  if (fan === "matematika") {
+  const nomlar = {
+    matematika: "➕ Matematika",
+    ingliz: "🇬🇧 Ingliz tili",
+    tarix: "📜 Tarix",
+    onaTili: "📖 Ona tili",
+    informatika: "💻 Informatika"
+  };
 
-    document.getElementById("fanNomi").innerText =
-      "➕ Matematika";
-
-  } else {
-
-    document.getElementById("fanNomi").innerText =
-      "🇬🇧 Ingliz tili";
-
-  }
+  document.getElementById("fanNomi").innerText =
+    nomlar[fan];
 
   savolniChiqar();
-
 }
 
 
@@ -302,7 +241,6 @@ function savolniChiqar() {
   document.getElementById("savol").innerText =
     test[savolRaqami].savol;
 
-
   let javoblar = "";
 
   test[savolRaqami].javoblar.forEach(
@@ -316,10 +254,8 @@ function savolniChiqar() {
     }
   );
 
-
   document.getElementById("javoblar").innerHTML =
     javoblar;
-
 }
 
 
@@ -327,14 +263,11 @@ function javobniTekshir(tanlangan) {
 
   let test = testlar[tanlanganFan];
 
-
   if (tanlangan === test[savolRaqami].togri) {
     ball++;
   }
 
-
   savolRaqami++;
-
 
   if (savolRaqami < test.length) {
 
@@ -356,9 +289,7 @@ function javobniTekshir(tanlangan) {
 
     document.getElementById("qayta").style.display =
       "block";
-
   }
-
 }
 
 
@@ -373,7 +304,6 @@ function qaytaIshlash() {
   document.getElementById("natija").innerText = "";
 
   savolniChiqar();
-
 }
 
 </script>
