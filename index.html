@@ -11,7 +11,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       background: #f2f2f2;
-      padding: 25px 10px;
+      padding: 20px 10px;
     }
 
     .box {
@@ -22,17 +22,23 @@
       border-radius: 20px;
     }
 
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 8px 0;
+      font-size: 17px;
+      border: none;
+      border-radius: 12px;
+      background: #eeeeee;
+    }
+
     h1 {
       font-size: 30px;
     }
 
-    .fan {
-      width: 100%;
-      padding: 16px;
-      margin: 10px 0;
-      font-size: 18px;
-      border: none;
-      border-radius: 12px;
+    #natija {
+      font-size: 20px;
+      font-weight: bold;
     }
 
     #test {
@@ -45,17 +51,17 @@
 
 <div class="box">
 
-  <div id="boshMenu">
+  <div id="menu">
 
     <h1>📚 O‘quvchi Test</h1>
 
-    <p>Fanni tanlang:</p>
+    <p>Fan tanlang:</p>
 
-    <button class="fan" onclick="testniBoshlash()">
+    <button onclick="boshlash('matematika')">
       ➕ Matematika
     </button>
 
-    <button class="fan" onclick="testniBoshlash()">
+    <button onclick="boshlash('ingliz')">
       🇬🇧 Ingliz tili
     </button>
 
@@ -63,6 +69,10 @@
 
 
   <div id="test">
+
+    <h2 id="fanNomi"></h2>
+
+    <p id="raqam"></p>
 
     <h2 id="savol"></h2>
 
@@ -77,30 +87,172 @@
 
 <script>
 
-function testniBoshlash() {
+const testlar = {
 
-  document.getElementById("boshMenu").style.display = "none";
+  matematika: [
+
+    {
+      savol: "5 + 7 = ?",
+      javoblar: ["10", "12", "14"],
+      togri: 1
+    },
+
+    {
+      savol: "8 × 2 = ?",
+      javoblar: ["14", "16", "18"],
+      togri: 1
+    },
+
+    {
+      savol: "20 - 8 = ?",
+      javoblar: ["10", "12", "14"],
+      togri: 1
+    },
+
+    {
+      savol: "36 ÷ 6 = ?",
+      javoblar: ["5", "6", "7"],
+      togri: 1
+    },
+
+    {
+      savol: "9 + 6 = ?",
+      javoblar: ["13", "15", "17"],
+      togri: 1
+    }
+  ],
+
+
+  ingliz: [
+
+    {
+      savol: "Apple so‘zi nimani anglatadi?",
+      javoblar: ["Olma", "Kitob", "Uy"],
+      togri: 0
+    },
+
+    {
+      savol: "Book so‘zi nimani anglatadi?",
+      javoblar: ["Qalam", "Kitob", "Maktab"],
+      togri: 1
+    },
+
+    {
+      savol: "Cat so‘zi nimani anglatadi?",
+      javoblar: ["It", "Mushuk", "Ot"],
+      togri: 1
+    },
+
+    {
+      savol: "School so‘zi nimani anglatadi?",
+      javoblar: ["Maktab", "Uy", "Do‘kon"],
+      togri: 0
+    },
+
+    {
+      savol: "Water so‘zi nimani anglatadi?",
+      javoblar: ["Suv", "Non", "Sut"],
+      togri: 0
+    }
+  ]
+
+};
+
+
+let tanlanganFan = "";
+
+let savolRaqami = 0;
+
+let ball = 0;
+
+
+function boshlash(fan) {
+
+  tanlanganFan = fan;
+
+  savolRaqami = 0;
+
+  ball = 0;
+
+  document.getElementById("menu").style.display = "none";
 
   document.getElementById("test").style.display = "block";
 
-  document.getElementById("savol").innerText =
-    "2 + 3 = ?";
+  if (fan === "matematika") {
 
-  document.getElementById("javoblar").innerHTML = `
-    <button class="fan" onclick="tekshir(false)">4</button>
-    <button class="fan" onclick="tekshir(true)">5</button>
-    <button class="fan" onclick="tekshir(false)">6</button>
-  `;
+    document.getElementById("fanNomi").innerText =
+      "➕ Matematika";
+
+  } else {
+
+    document.getElementById("fanNomi").innerText =
+      "🇬🇧 Ingliz tili";
+
+  }
+
+  savolniChiqar();
+
 }
 
-function tekshir(togri) {
 
-  if (togri) {
-    document.getElementById("natija").innerText =
-      "✅ To‘g‘ri javob!";
+function savolniChiqar() {
+
+  let test = testlar[tanlanganFan];
+
+  document.getElementById("raqam").innerText =
+    "Savol " + (savolRaqami + 1) + " / " + test.length;
+
+  document.getElementById("savol").innerText =
+    test[savolRaqami].savol;
+
+
+  let javoblar = "";
+
+  test[savolRaqami].javoblar.forEach(function(javob, index) {
+
+    javoblar +=
+      `<button onclick="javobniTekshir(${index})">${javob}</button>`;
+
+  });
+
+
+  document.getElementById("javoblar").innerHTML =
+    javoblar;
+
+}
+
+
+function javobniTekshir(tanlangan) {
+
+  let test = testlar[tanlanganFan];
+
+
+  if (tanlangan === test[savolRaqami].togri) {
+
+    ball++;
+
+  }
+
+
+  savolRaqami++;
+
+
+  if (savolRaqami < test.length) {
+
+    savolniChiqar();
+
   } else {
+
+    document.getElementById("savol").innerText =
+      "🎉 Test tugadi!";
+
+    document.getElementById("raqam").innerText = "";
+
+    document.getElementById("javoblar").innerHTML = "";
+
     document.getElementById("natija").innerText =
-      "❌ Noto‘g‘ri javob!";
+      "🏆 Natijangiz: " + ball + " / " + test.length;
+
   }
 
 }
