@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mini Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>O‘quvchi Test</title>
 
   <style>
     body {
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       text-align: center;
       background: #f2f2f2;
-      padding: 20px;
+      padding: 25px 10px;
     }
 
     .box {
       background: white;
-      padding: 25px;
-      border-radius: 20px;
       max-width: 450px;
       margin: auto;
+      padding: 25px;
+      border-radius: 20px;
     }
 
-    button {
+    h1 {
+      font-size: 30px;
+    }
+
+    .fan {
       width: 100%;
-      padding: 14px;
-      margin: 7px 0;
-      font-size: 17px;
+      padding: 16px;
+      margin: 10px 0;
+      font-size: 18px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
-    #natija {
-      font-size: 20px;
-      font-weight: bold;
+    #test {
+      display: none;
     }
   </style>
 </head>
@@ -39,125 +45,65 @@
 
 <div class="box">
 
-  <h1>📚 Mini Test</h1>
+  <div id="boshMenu">
 
-  <h2 id="savol"></h2>
+    <h1>📚 O‘quvchi Test</h1>
 
-  <div id="javoblar"></div>
+    <p>Fanni tanlang:</p>
 
-  <p id="natija"></p>
+    <button class="fan" onclick="testniBoshlash()">
+      ➕ Matematika
+    </button>
+
+    <button class="fan" onclick="testniBoshlash()">
+      🇬🇧 Ingliz tili
+    </button>
+
+  </div>
+
+
+  <div id="test">
+
+    <h2 id="savol"></h2>
+
+    <div id="javoblar"></div>
+
+    <p id="natija"></p>
+
+  </div>
 
 </div>
 
+
 <script>
 
-const testlar = [
-  {
-    savol: "2 + 3 = ?",
-    javoblar: ["4", "5", "6"],
-    togri: 1
-  },
+function testniBoshlash() {
 
-  {
-    savol: "5 × 2 = ?",
-    javoblar: ["7", "10", "12"],
-    togri: 1
-  },
+  document.getElementById("boshMenu").style.display = "none";
 
-  {
-    savol: "10 - 4 = ?",
-    javoblar: ["5", "6", "7"],
-    togri: 1
-  },
-
-  {
-    savol: "3 + 7 = ?",
-    javoblar: ["8", "10", "12"],
-    togri: 1
-  },
-
-  {
-    savol: "12 ÷ 3 = ?",
-    javoblar: ["3", "4", "5"],
-    togri: 1
-  },
-
-  {
-    savol: "9 + 1 = ?",
-    javoblar: ["10", "11", "12"],
-    togri: 0
-  },
-
-  {
-    savol: "6 × 2 = ?",
-    javoblar: ["10", "12", "14"],
-    togri: 1
-  },
-
-  {
-    savol: "15 - 5 = ?",
-    javoblar: ["8", "10", "12"],
-    togri: 1
-  },
-
-  {
-    savol: "4 + 4 = ?",
-    javoblar: ["6", "8", "9"],
-    togri: 1
-  },
-
-  {
-    savol: "20 ÷ 4 = ?",
-    javoblar: ["4", "5", "6"],
-    togri: 1
-  }
-];
-
-let savolRaqami = 0;
-let ball = 0;
-
-function savolniChiqar() {
+  document.getElementById("test").style.display = "block";
 
   document.getElementById("savol").innerText =
-    testlar[savolRaqami].savol;
+    "2 + 3 = ?";
 
-  let javoblar = "";
-
-  testlar[savolRaqami].javoblar.forEach(function(javob, index) {
-
-    javoblar +=
-      `<button onclick="javobniTekshir(${index})">${javob}</button>`;
-
-  });
-
-  document.getElementById("javoblar").innerHTML = javoblar;
+  document.getElementById("javoblar").innerHTML = `
+    <button class="fan" onclick="tekshir(false)">4</button>
+    <button class="fan" onclick="tekshir(true)">5</button>
+    <button class="fan" onclick="tekshir(false)">6</button>
+  `;
 }
 
-function javobniTekshir(tanlangan) {
+function tekshir(togri) {
 
-  if (tanlangan === testlar[savolRaqami].togri) {
-    ball++;
-  }
-
-  savolRaqami++;
-
-  if (savolRaqami < testlar.length) {
-
-    savolniChiqar();
-
-  } else {
-
-    document.getElementById("savol").innerText =
-      "🎉 Test tugadi!";
-
-    document.getElementById("javoblar").innerHTML = "";
-
+  if (togri) {
     document.getElementById("natija").innerText =
-      "Sizning natijangiz: " + ball + " / " + testlar.length;
+      "✅ To‘g‘ri javob!";
+  } else {
+    document.getElementById("natija").innerText =
+      "❌ Noto‘g‘ri javob!";
   }
-}
 
-savolniChiqar();
+}
 
 </script>
 
