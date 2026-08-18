@@ -3,307 +3,706 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>O‘quvchi Test</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f2f2f2;
-  padding: 20px 10px;
+  background: linear-gradient(135deg, #eef2ff, #fdf4ff);
+  color: #18233f;
+  padding: 20px 12px;
 }
 
-.box {
-  background: white;
-  max-width: 450px;
+.container {
+  max-width: 1000px;
   margin: auto;
-  padding: 25px;
-  border-radius: 20px;
 }
 
-input {
-  width: 90%;
-  padding: 14px;
-  margin: 10px 0 15px;
+/* BOSH MENU */
+
+.header {
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  box-shadow: 0 10px 30px rgba(124,58,237,.25);
+}
+
+h1 {
+  font-size: 42px;
+  margin: 15px 0 5px;
+}
+
+.subtitle {
+  color: #718096;
   font-size: 17px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
 }
 
-button {
+.name-box {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.name-box input {
   width: 100%;
-  padding: 15px;
-  margin: 8px 0;
+  padding: 18px;
+  border: 2px solid #ddd6fe;
+  border-radius: 18px;
   font-size: 17px;
-  border: none;
-  border-radius: 12px;
-  background: #eeeeee;
+  outline: none;
+  background: white;
 }
 
-button:active {
-  transform: scale(0.98);
+.name-box input:focus {
+  border-color: #8b5cf6;
 }
+
+.select-title {
+  text-align: center;
+  color: #6937d7;
+  font-size: 25px;
+  margin: 30px 0 20px;
+}
+
+/* FANLAR */
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.subject {
+  color: white;
+  padding: 20px 12px;
+  border-radius: 22px;
+  text-align: center;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 25px rgba(0,0,0,.15);
+  transition: .2s;
+}
+
+.subject:hover {
+  transform: translateY(-5px);
+}
+
+.subject-icon {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  background: rgba(255,255,255,.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+}
+
+.subject h2 {
+  font-size: 19px;
+  margin: 10px 0 5px;
+}
+
+.subject p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.math {
+  background: linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+.english {
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.history {
+  background: linear-gradient(135deg,#f59e0b,#f97316);
+}
+
+.language {
+  background: linear-gradient(135deg,#a855f7,#7c3aed);
+}
+
+.computer {
+  background: linear-gradient(135deg,#14b8a6,#0891b2);
+}
+
+.start-btn {
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.18);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* TEST */
 
 #test {
   display: none;
 }
 
-#natija {
+.test-header {
+  background: linear-gradient(135deg,#7c3aed,#6366f1);
+  color: white;
+  padding: 20px;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 10px 25px rgba(99,102,241,.25);
+}
+
+.test-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.fan {
   font-size: 20px;
   font-weight: bold;
+}
+
+.ball {
+  background: rgba(0,0,0,.15);
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.progress-bg {
+  height: 9px;
+  background: rgba(255,255,255,.35);
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #22c55e;
+  border-radius: 10px;
+  transition: .3s;
+}
+
+.test-card {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.question {
+  text-align: center;
+}
+
+.question-icon {
+  width: 55px;
+  height: 55px;
+  margin: auto;
+  background: #ede9fe;
+  color: #6d28d9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+#savol {
+  font-size: 30px;
+  margin: 20px 0 25px;
+}
+
+.answers {
+  max-width: 700px;
+  margin: auto;
+}
+
+.answer {
+  width: 100%;
+  padding: 18px;
+  margin: 9px 0;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.answer:hover {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+}
+
+.bottom-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.bottom-buttons button {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.home-btn {
+  background: #eef2f7;
+  color: #334155;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  color: white;
+}
+
+/* NATIJA */
+
+#natija {
+  text-align: center;
+  font-size: 24px;
+  margin: 25px 0;
+  color: #16a34a;
+}
+
+@media(max-width: 800px) {
+  .subjects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media(max-width: 500px) {
+  body {
+    padding: 10px;
+  }
+
+  .subjects {
+    grid-template-columns: 1fr;
+  }
+
+  .subject {
+    min-height: 200px;
+  }
+
+  #savol {
+    font-size: 24px;
+  }
+
+  .test-top {
+    flex-direction: column;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-  <div id="menu">
-    <h1>📚 O‘quvchi Test</h1>
+<!-- BOSH MENU -->
 
+<div id="menu">
+
+  <div class="header">
+
+    <div class="logo">🎓</div>
+
+    <h1>O‘quvchi Test</h1>
+
+    <div class="subtitle">
+      Bilimingizni sinab ko‘ring va natijangizni yaxshilang!
+    </div>
+
+  </div>
+
+  <div class="name-box">
     <input
       type="text"
       id="ism"
-      placeholder="Ismingizni kiriting"
+      placeholder="👤 Ismingizni kiriting..."
     >
-
-    <p>Fan tanlang:</p>
-
-    <button onclick="boshlash('matematika')">
-      ➕ Matematika
-    </button>
-
-    <button onclick="boshlash('ingliz')">
-      🇬🇧 Ingliz tili
-    </button>
-
-    <button onclick="boshlash('tarix')">
-      📜 Tarix
-    </button>
-
-    <button onclick="boshlash('onaTili')">
-      📖 Ona tili
-    </button>
-
-    <button onclick="boshlash('informatika')">
-      💻 Informatika
-    </button>
   </div>
 
-  <div id="test">
+  <h2 class="select-title">
+    Fan tanlang
+  </h2>
 
-    <h2 id="fanNomi"></h2>
+  <div class="subjects">
 
-    <p id="raqam"></p>
+    <div class="subject math">
+      <div>
+        <div class="subject-icon">🧮</div>
+        <h2>➕ Matematika</h2>
+        <p>10 ta savol</p>
+      </div>
 
-    <h2 id="savol"></h2>
+      <button class="start-btn"
+        onclick="boshlash('matematika')">
+        Testni boshlash →
+      </button>
+    </div>
 
-    <div id="javoblar"></div>
+    <div class="subject english">
+      <div>
+        <div class="subject-icon">🇬🇧</div>
+        <h2>Ingliz tili</h2>
+        <p>10 ta savol</p>
+      </div>
 
-    <p id="natija"></p>
+      <button class="start-btn"
+        onclick="boshlash('ingliz')">
+        Testni boshlash →
+      </button>
+    </div>
 
-    <button id="qayta" onclick="qaytaIshlash()" style="display:none;">
-      🔄 Qayta ishlash
-    </button>
+    <div class="subject history">
+      <div>
+        <div class="subject-icon">📜</div>
+        <h2>📜 Tarix</h2>
+        <p>10 ta savol</p>
+      </div>
 
-    <button onclick="menugaQaytish()">
-      🏠 Bosh menyu
-    </button>
+      <button class="start-btn"
+        onclick="boshlash('tarix')">
+        Testni boshlash →
+      </button>
+    </div>
+
+    <div class="subject language">
+      <div>
+        <div class="subject-icon">📖</div>
+        <h2>Ona tili</h2>
+        <p>10 ta savol</p>
+      </div>
+
+      <button class="start-btn"
+        onclick="boshlash('onaTili')">
+        Testni boshlash →
+      </button>
+    </div>
+
+    <div class="subject computer">
+      <div>
+        <div class="subject-icon">💻</div>
+        <h2>Informatika</h2>
+        <p>10 ta savol</p>
+      </div>
+
+      <button class="start-btn"
+        onclick="boshlash('informatika')">
+        Testni boshlash →
+      </button>
+    </div>
 
   </div>
 
 </div>
 
+
+<!-- TEST -->
+
+<div id="test">
+
+  <div class="test-header">
+
+    <div class="test-top">
+
+      <div class="fan" id="fanNomi"></div>
+
+      <div id="raqam"></div>
+
+      <div class="ball">
+        🏆 Ball: <span id="ball">0</span>
+      </div>
+
+    </div>
+
+    <div class="progress-bg">
+      <div class="progress" id="progress"></div>
+    </div>
+
+  </div>
+
+
+  <div class="test-card">
+
+    <div class="question">
+
+      <div class="question-icon">?</div>
+
+      <h2 id="savol"></h2>
+
+    </div>
+
+    <div id="javoblar" class="answers"></div>
+
+    <p id="natija"></p>
+
+    <div class="bottom-buttons">
+
+      <button
+        class="home-btn"
+        onclick="menugaQaytish()">
+        🏠 Bosh menyu
+      </button>
+
+      <button
+        id="qayta"
+        class="retry-btn"
+        onclick="qaytaIshlash()"
+        style="display:none;">
+        🔄 Qayta ishlash
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
 <script>
 
 const testlar = {
 
-  matematika: [
-    { savol: "5 + 7 = ?", javoblar: ["10", "12", "14"], togri: 1 },
-    { savol: "8 × 2 = ?", javoblar: ["14", "16", "18"], togri: 1 },
-    { savol: "20 - 8 = ?", javoblar: ["10", "12", "14"], togri: 1 },
-    { savol: "36 ÷ 6 = ?", javoblar: ["5", "6", "7"], togri: 1 },
-    { savol: "9 + 6 = ?", javoblar: ["13", "15", "17"], togri: 1 },
-    { savol: "7 × 3 = ?", javoblar: ["20", "21", "24"], togri: 1 },
-    { savol: "40 ÷ 5 = ?", javoblar: ["6", "8", "10"], togri: 1 },
-    { savol: "18 + 7 = ?", javoblar: ["24", "25", "26"], togri: 1 },
-    { savol: "50 - 23 = ?", javoblar: ["27", "28", "29"], togri: 0 },
-    { savol: "6 × 6 = ?", javoblar: ["30", "36", "42"], togri: 1 }
-  ],
+matematika: [
+{savol:"5 + 7 = ?",javoblar:["10","12","14"],togri:1},
+{savol:"8 × 2 = ?",javoblar:["14","16","18"],togri:1},
+{savol:"20 - 8 = ?",javoblar:["10","12","14"],togri:1},
+{savol:"36 ÷ 6 = ?",javoblar:["5","6","7"],togri:1},
+{savol:"9 + 6 = ?",javoblar:["13","15","17"],togri:1},
+{savol:"7 × 3 = ?",javoblar:["20","21","24"],togri:1},
+{savol:"40 ÷ 5 = ?",javoblar:["6","8","10"],togri:1},
+{savol:"18 + 7 = ?",javoblar:["24","25","26"],togri:1},
+{savol:"50 - 23 = ?",javoblar:["27","28","29"],togri:0},
+{savol:"6 × 6 = ?",javoblar:["30","36","42"],togri:1}
+],
 
-  ingliz: [
-    { savol: "Apple so‘zi nimani anglatadi?", javoblar: ["Olma", "Kitob", "Uy"], togri: 0 },
-    { savol: "Book so‘zi nimani anglatadi?", javoblar: ["Qalam", "Kitob", "Maktab"], togri: 1 },
-    { savol: "Cat so‘zi nimani anglatadi?", javoblar: ["It", "Mushuk", "Ot"], togri: 1 },
-    { savol: "School so‘zi nimani anglatadi?", javoblar: ["Maktab", "Uy", "Do‘kon"], togri: 0 },
-    { savol: "Water so‘zi nimani anglatadi?", javoblar: ["Suv", "Non", "Sut"], togri: 0 },
-    { savol: "Dog so‘zi nimani anglatadi?", javoblar: ["Mushuk", "It", "Ot"], togri: 1 },
-    { savol: "House so‘zi nimani anglatadi?", javoblar: ["Uy", "Maktab", "Mashina"], togri: 0 },
-    { savol: "Pen so‘zi nimani anglatadi?", javoblar: ["Kitob", "Qalam", "Stol"], togri: 1 },
-    { savol: "Sun so‘zi nimani anglatadi?", javoblar: ["Oy", "Yulduz", "Quyosh"], togri: 2 },
-    { savol: "Milk so‘zi nimani anglatadi?", javoblar: ["Suv", "Sut", "Choy"], togri: 1 }
-  ],
+ingliz: [
+{savol:"Apple so‘zi nimani anglatadi?",javoblar:["Olma","Kitob","Uy"],togri:0},
+{savol:"Book so‘zi nimani anglatadi?",javoblar:["Qalam","Kitob","Maktab"],togri:1},
+{savol:"Cat so‘zi nimani anglatadi?",javoblar:["It","Mushuk","Ot"],togri:1},
+{savol:"School so‘zi nimani anglatadi?",javoblar:["Maktab","Uy","Do‘kon"],togri:0},
+{savol:"Water so‘zi nimani anglatadi?",javoblar:["Suv","Non","Sut"],togri:0},
+{savol:"Dog so‘zi nimani anglatadi?",javoblar:["Mushuk","It","Ot"],togri:1},
+{savol:"House so‘zi nimani anglatadi?",javoblar:["Uy","Maktab","Mashina"],togri:0},
+{savol:"Pen so‘zi nimani anglatadi?",javoblar:["Kitob","Qalam","Stol"],togri:1},
+{savol:"Sun so‘zi nimani anglatadi?",javoblar:["Oy","Yulduz","Quyosh"],togri:2},
+{savol:"Milk so‘zi nimani anglatadi?",javoblar:["Suv","Sut","Choy"],togri:1}
+],
 
-  tarix: [
-    { savol: "O‘zbekiston poytaxti qaysi shahar?", javoblar: ["Toshkent", "Samarqand", "Buxoro"], togri: 0 },
-    { savol: "Amir Temur qaysi asrlarda yashagan?", javoblar: ["XIV-XV", "XVI-XVII", "XII-XIII"], togri: 0 },
-    { savol: "Samarqanddagi mashhur maydon qanday ataladi?", javoblar: ["Registon", "Ark", "Ichan qal’a"], togri: 0 },
-    { savol: "O‘zbekiston mustaqillik kuni qachon?", javoblar: ["1-sentabr", "8-dekabr", "21-mart"], togri: 0 },
-    { savol: "Buyuk Ipak yo‘li nimani bog‘lagan?", javoblar: ["Sharq va G‘arbni", "Afrika va Amerikani", "Faqat Yevropani"], togri: 0 },
-    { savol: "Mirzo Ulug‘bek kim bo‘lgan?", javoblar: ["Olim va hukmdor", "Rassom", "Sayyoh"], togri: 0 },
-    { savol: "O‘zbekistonning davlat tili qaysi?", javoblar: ["O‘zbek tili", "Rus tili", "Ingliz tili"], togri: 0 },
-    { savol: "Buxorodagi mashhur tarixiy inshoot?", javoblar: ["Ark", "Eyfel minorasi", "Kolizey"], togri: 0 },
-    { savol: "Navro‘z qaysi faslda nishonlanadi?", javoblar: ["Bahor", "Qish", "Kuz"], togri: 0 },
-    { savol: "Alisher Navoiy kim bo‘lgan?", javoblar: ["Shoir va mutafakkir", "Rassom", "Sayyoh"], togri: 0 }
-  ],
+tarix: [
+{savol:"O‘zbekiston poytaxti qaysi shahar?",javoblar:["Toshkent","Samarqand","Buxoro"],togri:0},
+{savol:"Amir Temur qaysi asrlarda yashagan?",javoblar:["XIV-XV","XVI-XVII","XII-XIII"],togri:0},
+{savol:"Samarqanddagi mashhur maydon qanday ataladi?",javoblar:["Registon","Ark","Ichan qal’a"],togri:0},
+{savol:"O‘zbekiston mustaqillik kuni qachon?",javoblar:["1-sentabr","8-dekabr","21-mart"],togri:0},
+{savol:"Buyuk Ipak yo‘li nimani bog‘lagan?",javoblar:["Sharq va G‘arbni","Afrika va Amerikani","Faqat Yevropani"],togri:0},
+{savol:"Mirzo Ulug‘bek kim bo‘lgan?",javoblar:["Olim va hukmdor","Rassom","Sayyoh"],togri:0},
+{savol:"O‘zbekistonning davlat tili qaysi?",javoblar:["O‘zbek tili","Rus tili","Ingliz tili"],togri:0},
+{savol:"Buxorodagi mashhur tarixiy inshoot?",javoblar:["Ark","Eyfel minorasi","Kolizey"],togri:0},
+{savol:"Navro‘z qaysi faslda nishonlanadi?",javoblar:["Bahor","Qish","Kuz"],togri:0},
+{savol:"Alisher Navoiy kim bo‘lgan?",javoblar:["Shoir va mutafakkir","Rassom","Sayyoh"],togri:0}
+],
 
-  onaTili: [
-    { savol: "O‘zbek tilida nechta unli harf bor?", javoblar: ["6 ta", "5 ta", "7 ta"], togri: 0 },
-    { savol: "Ot qanday so‘roqlarga javob bo‘ladi?", javoblar: ["Kim? Nima?", "Qanday?", "Nima qildi?"], togri: 0 },
-    { savol: "Sifat nimani bildiradi?", javoblar: ["Belgini", "Harakatni", "Sonni"], togri: 0 },
-    { savol: "Fe’l nimani bildiradi?", javoblar: ["Harakatni", "Belgini", "Predmetni"], togri: 0 },
-    { savol: "Darak gap oxirida odatda nima qo‘yiladi?", javoblar: [".", "?", "!"], togri: 0 },
-    { savol: "So‘zning ma’noli eng kichik qismi nima?", javoblar: ["Morfema", "Gap", "Matn"], togri: 0 },
-    { savol: "“Chiroyli” qanday so‘z turkumi?", javoblar: ["Sifat", "Fe’l", "Ot"], togri: 0 },
-    { savol: "“Yugurdi” qanday so‘z turkumi?", javoblar: ["Fe’l", "Sifat", "Ot"], togri: 0 },
-    { savol: "“Kitob” qanday so‘z turkumi?", javoblar: ["Ot", "Fe’l", "Sifat"], togri: 0 },
-    { savol: "So‘roq gap oxirida qaysi belgi qo‘yiladi?", javoblar: ["?", ".", "!"], togri: 0 }
-  ],
+onaTili: [
+{savol:"O‘zbek tilida nechta unli harf bor?",javoblar:["6 ta","5 ta","7 ta"],togri:0},
+{savol:"Ot qanday so‘roqlarga javob bo‘ladi?",javoblar:["Kim? Nima?","Qanday?","Nima qildi?"],togri:0},
+{savol:"Sifat nimani bildiradi?",javoblar:["Belgini","Harakatni","Sonni"],togri:0},
+{savol:"Fe’l nimani bildiradi?",javoblar:["Harakatni","Belgini","Predmetni"],togri:0},
+{savol:"Darak gap oxirida odatda nima qo‘yiladi?",javoblar:[".","?","!"],togri:0},
+{savol:"So‘zning ma’noli eng kichik qismi nima?",javoblar:["Morfema","Gap","Matn"],togri:0},
+{savol:"“Chiroyli” qanday so‘z turkumi?",javoblar:["Sifat","Fe’l","Ot"],togri:0},
+{savol:"“Yugurdi” qanday so‘z turkumi?",javoblar:["Fe’l","Sifat","Ot"],togri:0},
+{savol:"“Kitob” qanday so‘z turkumi?",javoblar:["Ot","Fe’l","Sifat"],togri:0},
+{savol:"So‘roq gap oxirida qaysi belgi qo‘yiladi?",javoblar:["?","." ,"!"],togri:0}
+],
 
-  informatika: [
-    { savol: "Kompyuterning asosiy qurilmalaridan biri?", javoblar: ["Monitor", "Daftar", "Kitob"], togri: 0 },
-    { savol: "Klaviatura nima uchun ishlatiladi?", javoblar: ["Ma’lumot kiritish", "Rasm chizish", "Qog‘oz chiqarish"], togri: 0 },
-    { savol: "Sichqoncha nima?", javoblar: ["Kiritish qurilmasi", "Printer", "Monitor"], togri: 0 },
-    { savol: "Internet nima?", javoblar: ["Global tarmoq", "Kompyuter o‘yini", "Printer"], togri: 0 },
-    { savol: "HTML nima uchun ishlatiladi?", javoblar: ["Veb-sahifa yaratish", "Video olish", "Musiqa yozish"], togri: 0 },
-    { savol: ".jpg odatda qanday fayl?", javoblar: ["Rasm", "Audio", "Matn"], togri: 0 },
-    { savol: "Printer nima qiladi?", javoblar: ["Qog‘ozga chiqaradi", "Internet tarqatadi", "Ovoz yozadi"], togri: 0 },
-    { savol: "Google Chrome nima?", javoblar: ["Brauzer", "Antivirus", "O‘yin"], togri: 0 },
-    { savol: "CPU nima?", javoblar: ["Markaziy protsessor", "Monitor", "Klaviatura"], togri: 0 },
-    { savol: "Faylni saqlash uchun qaysi tugma ishlatiladi?", javoblar: ["Ctrl + S", "Ctrl + P", "Ctrl + X"], togri: 0 }
-  ]
+informatika: [
+{savol:"Kompyuterning asosiy qurilmalaridan biri?",javoblar:["Monitor","Daftar","Kitob"],togri:0},
+{savol:"Klaviatura nima uchun ishlatiladi?",javoblar:["Ma’lumot kiritish","Rasm chizish","Qog‘oz chiqarish"],togri:0},
+{savol:"Sichqoncha nima?",javoblar:["Kiritish qurilmasi","Printer","Monitor"],togri:0},
+{savol:"Internet nima?",javoblar:["Global tarmoq","Kompyuter o‘yini","Printer"],togri:0},
+{savol:"HTML nima uchun ishlatiladi?",javoblar:["Veb-sahifa yaratish","Video olish","Musiqa yozish"],togri:0},
+{savol:".jpg odatda qanday fayl?",javoblar:["Rasm","Audio","Matn"],togri:0},
+{savol:"Printer nima qiladi?",javoblar:["Qog‘ozga chiqaradi","Internet tarqatadi","Ovoz yozadi"],togri:0},
+{savol:"Google Chrome nima?",javoblar:["Brauzer","Antivirus","O‘yin"],togri:0},
+{savol:"CPU nima?",javoblar:["Markaziy protsessor","Monitor","Klaviatura"],togri:0},
+{savol:"Faylni saqlash uchun qaysi tugma ishlatiladi?",javoblar:["Ctrl + S","Ctrl + P","Ctrl + X"],togri:0}
+]
 
 };
 
-let tanlanganFan = "";
-let foydalanuvchiIsmi = "";
-let savolRaqami = 0;
-let ball = 0;
+let tanlanganFan="";
+let foydalanuvchiIsmi="";
+let savolRaqami=0;
+let ball=0;
 
-const nomlar = {
-  matematika: "➕ Matematika",
-  ingliz: "🇬🇧 Ingliz tili",
-  tarix: "📜 Tarix",
-  onaTili: "📖 Ona tili",
-  informatika: "💻 Informatika"
+const nomlar={
+matematika:"➕ Matematika",
+ingliz:"🇬🇧 Ingliz tili",
+tarix:"📜 Tarix",
+onaTili:"📖 Ona tili",
+informatika:"💻 Informatika"
 };
 
-function boshlash(fan) {
+function boshlash(fan){
 
-  foydalanuvchiIsmi =
-    document.getElementById("ism").value.trim();
+foydalanuvchiIsmi=
+document.getElementById("ism").value.trim();
 
-  if (foydalanuvchiIsmi === "") {
-    alert("Iltimos, ismingizni kiriting!");
-    return;
-  }
-
-  tanlanganFan = fan;
-  savolRaqami = 0;
-  ball = 0;
-
-  document.getElementById("menu").style.display = "none";
-  document.getElementById("test").style.display = "block";
-  document.getElementById("qayta").style.display = "none";
-  document.getElementById("natija").innerText = "";
-
-  document.getElementById("fanNomi").innerText = nomlar[fan];
-
-  savolniChiqar();
+if(foydalanuvchiIsmi===""){
+alert("Iltimos, ismingizni kiriting!");
+return;
 }
 
-function savolniChiqar() {
+tanlanganFan=fan;
+savolRaqami=0;
+ball=0;
 
-  let test = testlar[tanlanganFan];
+document.getElementById("menu").style.display="none";
+document.getElementById("test").style.display="block";
+document.getElementById("qayta").style.display="none";
+document.getElementById("natija").innerText="";
 
-  document.getElementById("raqam").innerText =
-    "Savol " + (savolRaqami + 1) + " / " + test.length;
+document.getElementById("fanNomi").innerText=nomlar[fan];
 
-  document.getElementById("savol").innerText =
-    test[savolRaqami].savol;
-
-  let javoblar = "";
-
-  test[savolRaqami].javoblar.forEach(
-    function(javob, index) {
-
-      javoblar +=
-        `<button onclick="javobniTekshir(${index})">
-          ${javob}
-        </button>`;
-
-    }
-  );
-
-  document.getElementById("javoblar").innerHTML =
-    javoblar;
+savolniChiqar();
 }
 
-function javobniTekshir(tanlangan) {
+function savolniChiqar(){
 
-  let test = testlar[tanlanganFan];
+let test=testlar[tanlanganFan];
 
-  if (tanlangan === test[savolRaqami].togri) {
-    ball++;
-  }
+document.getElementById("raqam").innerText=
+"Savol "+(savolRaqami+1)+" / "+test.length;
 
-  savolRaqami++;
+document.getElementById("ball").innerText=ball;
 
-  if (savolRaqami < test.length) {
+let foiz=((savolRaqami)/test.length)*100;
 
-    savolniChiqar();
+document.getElementById("progress").style.width=
+foiz+"%";
 
-  } else {
+document.getElementById("savol").innerText=
+test[savolRaqami].savol;
 
-    document.getElementById("savol").innerText =
-      "🎉 Test tugadi!";
+let javoblar="";
 
-    document.getElementById("raqam").innerText = "";
+test[savolRaqami].javoblar.forEach(
+function(javob,index){
 
-    document.getElementById("javoblar").innerHTML = "";
+javoblar+=
+`<button class="answer"
+onclick="javobniTekshir(${index})">
+${javob}
+</button>`;
 
-    document.getElementById("natija").innerText =
-      "🏆 " + foydalanuvchiIsmi +
-      ", natijangiz: " +
-      ball + " / " + test.length;
+});
 
-    document.getElementById("qayta").style.display =
-      "block";
-  }
+document.getElementById("javoblar").innerHTML=
+javoblar;
 }
 
-function qaytaIshlash() {
+function javobniTekshir(tanlangan){
 
-  savolRaqami = 0;
-  ball = 0;
+let test=testlar[tanlanganFan];
 
-  document.getElementById("qayta").style.display =
-    "none";
-
-  document.getElementById("natija").innerText = "";
-
-  savolniChiqar();
+if(tanlangan===test[savolRaqami].togri){
+ball++;
 }
 
-function menugaQaytish() {
+savolRaqami++;
 
-  document.getElementById("test").style.display = "none";
-  document.getElementById("menu").style.display = "block";
+if(savolRaqami<test.length){
 
-  document.getElementById("qayta").style.display = "none";
+savolniChiqar();
 
-  document.getElementById("natija").innerText = "";
+}else{
+
+document.getElementById("savol").innerText=
+"🎉 Test tugadi!";
+
+document.getElementById("raqam").innerText="";
+
+document.getElementById("javoblar").innerHTML="";
+
+document.getElementById("progress").style.width="100%";
+
+let baho="";
+
+if(ball>=9){
+baho="🏆 A’lo!";
+}else if(ball>=7){
+baho="👏 Yaxshi!";
+}else if(ball>=5){
+baho="👍 Qoniqarli";
+}else{
+baho="📚 Yana mashq qiling";
+}
+
+document.getElementById("natija").innerText=
+"🏆 "+foydalanuvchiIsmi+
+", natijangiz: "+ball+
+" / "+test.length+" — "+baho;
+
+document.getElementById("ball").innerText=ball;
+
+document.getElementById("qayta").style.display="block";
+}
+}
+
+function qaytaIshlash(){
+
+savolRaqami=0;
+ball=0;
+
+document.getElementById("qayta").style.display="none";
+document.getElementById("natija").innerText="";
+
+savolniChiqar();
+}
+
+function menugaQaytish(){
+
+document.getElementById("test").style.display="none";
+document.getElementById("menu").style.display="block";
+
+document.getElementById("natija").innerText="";
 }
 
 </script>
