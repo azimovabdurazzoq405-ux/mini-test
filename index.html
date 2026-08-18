@@ -1,63 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O‘quvchi Test</title>
 
-  <title>O‘quvchi Test</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f2f2f2;
+  padding: 20px 10px;
+}
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f2f2f2;
-      padding: 20px 10px;
-    }
+.box {
+  background: white;
+  max-width: 450px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 20px;
+}
 
-    .box {
-      background: white;
-      max-width: 450px;
-      margin: auto;
-      padding: 25px;
-      border-radius: 20px;
-    }
+input {
+  width: 90%;
+  padding: 14px;
+  margin: 10px 0 15px;
+  font-size: 17px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
 
-    button {
-      width: 100%;
-      padding: 15px;
-      margin: 8px 0;
-      font-size: 17px;
-      border: none;
-      border-radius: 12px;
-      background: #eeeeee;
-    }
+button {
+  width: 100%;
+  padding: 15px;
+  margin: 8px 0;
+  font-size: 17px;
+  border: none;
+  border-radius: 12px;
+  background: #eeeeee;
+}
 
-    input {
-      width: 90%;
-      padding: 14px;
-      font-size: 17px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin: 10px 0;
-    }
+button:active {
+  transform: scale(0.98);
+}
 
-    h1 {
-      font-size: 30px;
-    }
+#test {
+  display: none;
+}
 
-    #natija {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    #test {
-      display: none;
-    }
-
-    #qayta {
-      display: none;
-    }
-  </style>
+#natija {
+  font-size: 20px;
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
@@ -65,7 +60,6 @@
 <div class="box">
 
   <div id="menu">
-
     <h1>📚 O‘quvchi Test</h1>
 
     <input
@@ -76,40 +70,56 @@
 
     <p>Fan tanlang:</p>
 
-    <button onclick="boshlash('matematika')">➕ Matematika</button>
-    <button onclick="boshlash('ingliz')">🇬🇧 Ingliz tili</button>
-    <button onclick="boshlash('tarix')">📜 Tarix</button>
-    <button onclick="boshlash('onaTili')">📖 Ona tili</button>
-    <button onclick="boshlash('informatika')">💻 Informatika</button>
+    <button onclick="boshlash('matematika')">
+      ➕ Matematika
+    </button>
 
+    <button onclick="boshlash('ingliz')">
+      🇬🇧 Ingliz tili
+    </button>
+
+    <button onclick="boshlash('tarix')">
+      📜 Tarix
+    </button>
+
+    <button onclick="boshlash('onaTili')">
+      📖 Ona tili
+    </button>
+
+    <button onclick="boshlash('informatika')">
+      💻 Informatika
+    </button>
   </div>
-
 
   <div id="test">
 
     <h2 id="fanNomi"></h2>
+
     <p id="raqam"></p>
+
     <h2 id="savol"></h2>
 
     <div id="javoblar"></div>
 
     <p id="natija"></p>
 
-    <button id="qayta" onclick="qaytaIshlash()">
+    <button id="qayta" onclick="qaytaIshlash()" style="display:none;">
       🔄 Qayta ishlash
+    </button>
+
+    <button onclick="menugaQaytish()">
+      🏠 Bosh menyu
     </button>
 
   </div>
 
 </div>
 
-
 <script>
 
 const testlar = {
 
   matematika: [
-
     { savol: "5 + 7 = ?", javoblar: ["10", "12", "14"], togri: 1 },
     { savol: "8 × 2 = ?", javoblar: ["14", "16", "18"], togri: 1 },
     { savol: "20 - 8 = ?", javoblar: ["10", "12", "14"], togri: 1 },
@@ -120,12 +130,9 @@ const testlar = {
     { savol: "18 + 7 = ?", javoblar: ["24", "25", "26"], togri: 1 },
     { savol: "50 - 23 = ?", javoblar: ["27", "28", "29"], togri: 0 },
     { savol: "6 × 6 = ?", javoblar: ["30", "36", "42"], togri: 1 }
-
   ],
 
-
   ingliz: [
-
     { savol: "Apple so‘zi nimani anglatadi?", javoblar: ["Olma", "Kitob", "Uy"], togri: 0 },
     { savol: "Book so‘zi nimani anglatadi?", javoblar: ["Qalam", "Kitob", "Maktab"], togri: 1 },
     { savol: "Cat so‘zi nimani anglatadi?", javoblar: ["It", "Mushuk", "Ot"], togri: 1 },
@@ -136,72 +143,68 @@ const testlar = {
     { savol: "Pen so‘zi nimani anglatadi?", javoblar: ["Kitob", "Qalam", "Stol"], togri: 1 },
     { savol: "Sun so‘zi nimani anglatadi?", javoblar: ["Oy", "Yulduz", "Quyosh"], togri: 2 },
     { savol: "Milk so‘zi nimani anglatadi?", javoblar: ["Suv", "Sut", "Choy"], togri: 1 }
-
   ],
-
 
   tarix: [
-
     { savol: "O‘zbekiston poytaxti qaysi shahar?", javoblar: ["Toshkent", "Samarqand", "Buxoro"], togri: 0 },
-    { savol: "Amir Temur qaysi asrda yashagan?", javoblar: ["XIV-XV", "XVI-XVII", "XII-XIII"], togri: 0 },
-    { savol: "Samarqanddagi mashhur maydon qanday ataladi?", javoblar: ["Registon", "Ichan qal’a", "Ark"], togri: 0 },
-    { savol: "O‘zbekiston mustaqillik kunini qachon nishonlaydi?", javoblar: ["1-sentabr", "8-dekabr", "21-mart"], togri: 0 },
-    { savol: "Buyuk Ipak yo‘li nimani bog‘lagan?", javoblar: ["Sharq va G‘arbni", "Faqat Afrikani", "Faqat Amerikani"], togri: 0 },
-    { savol: "Mirzo Ulug‘bek kim bo‘lgan?", javoblar: ["Olim va hukmdor", "Shoir", "Rassom"], togri: 0 },
-    { savol: "O‘zbekiston Respublikasining davlat tili qaysi?", javoblar: ["O‘zbek tili", "Rus tili", "Ingliz tili"], togri: 0 },
-    { savol: "Buxorodagi mashhur tarixiy inshootlardan biri?", javoblar: ["Ark", "Eyfel minorasi", "Kolizey"], togri: 0 },
-    { savol: "Navro‘z bayrami qaysi faslda nishonlanadi?", javoblar: ["Bahor", "Qish", "Kuz"], togri: 0 },
-    { savol: "Alisher Navoiy kim bo‘lgan?", javoblar: ["Shoir va mutafakkir", "Sarkarda", "Sayyoh"], togri: 0 }
-
+    { savol: "Amir Temur qaysi asrlarda yashagan?", javoblar: ["XIV-XV", "XVI-XVII", "XII-XIII"], togri: 0 },
+    { savol: "Samarqanddagi mashhur maydon qanday ataladi?", javoblar: ["Registon", "Ark", "Ichan qal’a"], togri: 0 },
+    { savol: "O‘zbekiston mustaqillik kuni qachon?", javoblar: ["1-sentabr", "8-dekabr", "21-mart"], togri: 0 },
+    { savol: "Buyuk Ipak yo‘li nimani bog‘lagan?", javoblar: ["Sharq va G‘arbni", "Afrika va Amerikani", "Faqat Yevropani"], togri: 0 },
+    { savol: "Mirzo Ulug‘bek kim bo‘lgan?", javoblar: ["Olim va hukmdor", "Rassom", "Sayyoh"], togri: 0 },
+    { savol: "O‘zbekistonning davlat tili qaysi?", javoblar: ["O‘zbek tili", "Rus tili", "Ingliz tili"], togri: 0 },
+    { savol: "Buxorodagi mashhur tarixiy inshoot?", javoblar: ["Ark", "Eyfel minorasi", "Kolizey"], togri: 0 },
+    { savol: "Navro‘z qaysi faslda nishonlanadi?", javoblar: ["Bahor", "Qish", "Kuz"], togri: 0 },
+    { savol: "Alisher Navoiy kim bo‘lgan?", javoblar: ["Shoir va mutafakkir", "Rassom", "Sayyoh"], togri: 0 }
   ],
 
-
   onaTili: [
-
     { savol: "O‘zbek tilida nechta unli harf bor?", javoblar: ["6 ta", "5 ta", "7 ta"], togri: 0 },
     { savol: "Ot qanday so‘roqlarga javob bo‘ladi?", javoblar: ["Kim? Nima?", "Qanday?", "Nima qildi?"], togri: 0 },
     { savol: "Sifat nimani bildiradi?", javoblar: ["Belgini", "Harakatni", "Sonni"], togri: 0 },
     { savol: "Fe’l nimani bildiradi?", javoblar: ["Harakatni", "Belgini", "Predmetni"], togri: 0 },
-    { savol: "Gap oxirida darak gapda odatda nima qo‘yiladi?", javoblar: [".", "?", "!"], togri: 0 },
+    { savol: "Darak gap oxirida odatda nima qo‘yiladi?", javoblar: [".", "?", "!"], togri: 0 },
     { savol: "So‘zning ma’noli eng kichik qismi nima?", javoblar: ["Morfema", "Gap", "Matn"], togri: 0 },
     { savol: "“Chiroyli” qanday so‘z turkumi?", javoblar: ["Sifat", "Fe’l", "Ot"], togri: 0 },
     { savol: "“Yugurdi” qanday so‘z turkumi?", javoblar: ["Fe’l", "Sifat", "Ot"], togri: 0 },
     { savol: "“Kitob” qanday so‘z turkumi?", javoblar: ["Ot", "Fe’l", "Sifat"], togri: 0 },
     { savol: "So‘roq gap oxirida qaysi belgi qo‘yiladi?", javoblar: ["?", ".", "!"], togri: 0 }
-
   ],
 
-
   informatika: [
-
     { savol: "Kompyuterning asosiy qurilmalaridan biri?", javoblar: ["Monitor", "Daftar", "Kitob"], togri: 0 },
     { savol: "Klaviatura nima uchun ishlatiladi?", javoblar: ["Ma’lumot kiritish", "Rasm chizish", "Qog‘oz chiqarish"], togri: 0 },
     { savol: "Sichqoncha nima?", javoblar: ["Kiritish qurilmasi", "Printer", "Monitor"], togri: 0 },
     { savol: "Internet nima?", javoblar: ["Global tarmoq", "Kompyuter o‘yini", "Printer"], togri: 0 },
-    { savol: "HTML nima uchun ishlatiladi?", javoblar: ["Veb-sahifa yaratish", "Video suratga olish", "Musiqa yozish"], togri: 0 },
-    { savol: "“.jpg” odatda qanday fayl?", javoblar: ["Rasm", "Audio", "Matn"], togri: 0 },
+    { savol: "HTML nima uchun ishlatiladi?", javoblar: ["Veb-sahifa yaratish", "Video olish", "Musiqa yozish"], togri: 0 },
+    { savol: ".jpg odatda qanday fayl?", javoblar: ["Rasm", "Audio", "Matn"], togri: 0 },
     { savol: "Printer nima qiladi?", javoblar: ["Qog‘ozga chiqaradi", "Internet tarqatadi", "Ovoz yozadi"], togri: 0 },
     { savol: "Google Chrome nima?", javoblar: ["Brauzer", "Antivirus", "O‘yin"], togri: 0 },
     { savol: "CPU nima?", javoblar: ["Markaziy protsessor", "Monitor", "Klaviatura"], togri: 0 },
-    { savol: "Faylni saqlash uchun qaysi tugma ko‘p ishlatiladi?", javoblar: ["Ctrl + S", "Ctrl + P", "Ctrl + X"], togri: 0 }
-
+    { savol: "Faylni saqlash uchun qaysi tugma ishlatiladi?", javoblar: ["Ctrl + S", "Ctrl + P", "Ctrl + X"], togri: 0 }
   ]
 
 };
-
 
 let tanlanganFan = "";
 let foydalanuvchiIsmi = "";
 let savolRaqami = 0;
 let ball = 0;
 
+const nomlar = {
+  matematika: "➕ Matematika",
+  ingliz: "🇬🇧 Ingliz tili",
+  tarix: "📜 Tarix",
+  onaTili: "📖 Ona tili",
+  informatika: "💻 Informatika"
+};
 
 function boshlash(fan) {
 
   foydalanuvchiIsmi =
-    document.getElementById("ism").value;
+    document.getElementById("ism").value.trim();
 
-  if (foydalanuvchiIsmi.trim() === "") {
+  if (foydalanuvchiIsmi === "") {
     alert("Iltimos, ismingizni kiriting!");
     return;
   }
@@ -215,28 +218,17 @@ function boshlash(fan) {
   document.getElementById("qayta").style.display = "none";
   document.getElementById("natija").innerText = "";
 
-  const nomlar = {
-    matematika: "➕ Matematika",
-    ingliz: "🇬🇧 Ingliz tili",
-    tarix: "📜 Tarix",
-    onaTili: "📖 Ona tili",
-    informatika: "💻 Informatika"
-  };
-
-  document.getElementById("fanNomi").innerText =
-    nomlar[fan];
+  document.getElementById("fanNomi").innerText = nomlar[fan];
 
   savolniChiqar();
 }
-
 
 function savolniChiqar() {
 
   let test = testlar[tanlanganFan];
 
   document.getElementById("raqam").innerText =
-    "Savol " + (savolRaqami + 1) +
-    " / " + test.length;
+    "Savol " + (savolRaqami + 1) + " / " + test.length;
 
   document.getElementById("savol").innerText =
     test[savolRaqami].savol;
@@ -257,7 +249,6 @@ function savolniChiqar() {
   document.getElementById("javoblar").innerHTML =
     javoblar;
 }
-
 
 function javobniTekshir(tanlangan) {
 
@@ -292,7 +283,6 @@ function javobniTekshir(tanlangan) {
   }
 }
 
-
 function qaytaIshlash() {
 
   savolRaqami = 0;
@@ -304,6 +294,16 @@ function qaytaIshlash() {
   document.getElementById("natija").innerText = "";
 
   savolniChiqar();
+}
+
+function menugaQaytish() {
+
+  document.getElementById("test").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+
+  document.getElementById("qayta").style.display = "none";
+
+  document.getElementById("natija").innerText = "";
 }
 
 </script>
